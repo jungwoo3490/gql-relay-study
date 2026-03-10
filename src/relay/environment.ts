@@ -52,7 +52,7 @@ async function fetchQuery(
   variables: Record<string, unknown>,
 ) {
   const response = await fetch(
-    "https://swapi-graphql.netlify.app/.netlify/functions/index",
+    "https://swapi-graphql.netlify.app/.netlify/functions/graphql",
     {
       method: "POST",
       headers: {
