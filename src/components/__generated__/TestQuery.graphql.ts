@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<a8f7fc31e2429d1da6087f483b1bc932>>
+ * @generated SignedSource<<66b07a0f2e8f82d2263beb957e95034f>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -9,12 +9,12 @@
 // @ts-nocheck
 
 import { ConcreteRequest } from 'relay-runtime';
+import { FragmentRefs } from "relay-runtime";
 export type TestQuery$variables = Record<PropertyKey, never>;
 export type TestQuery$data = {
   readonly allFilms: {
     readonly films: ReadonlyArray<{
-      readonly director: string | null | undefined;
-      readonly title: string | null | undefined;
+      readonly " $fragmentSpreads": FragmentRefs<"FilmHeader_film" | "FilmMeta_film" | "FilmSummary_film">;
     } | null | undefined> | null | undefined;
   } | null | undefined;
 };
@@ -23,22 +23,7 @@ export type TestQuery = {
   variables: TestQuery$variables;
 };
 
-const node: ConcreteRequest = (function(){
-var v0 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "title",
-  "storageKey": null
-},
-v1 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "director",
-  "storageKey": null
-};
-return {
+const node: ConcreteRequest = {
   "fragment": {
     "argumentDefinitions": [],
     "kind": "Fragment",
@@ -61,8 +46,21 @@ return {
             "name": "films",
             "plural": true,
             "selections": [
-              (v0/*: any*/),
-              (v1/*: any*/)
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "FilmHeader_film"
+              },
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "FilmMeta_film"
+              },
+              {
+                "args": null,
+                "kind": "FragmentSpread",
+                "name": "FilmSummary_film"
+              }
             ],
             "storageKey": null
           }
@@ -95,8 +93,41 @@ return {
             "name": "films",
             "plural": true,
             "selections": [
-              (v0/*: any*/),
-              (v1/*: any*/),
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "title",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "episodeID",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "director",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "releaseDate",
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "kind": "ScalarField",
+                "name": "openingCrawl",
+                "storageKey": null
+              },
               {
                 "alias": null,
                 "args": null,
@@ -113,16 +144,15 @@ return {
     ]
   },
   "params": {
-    "cacheID": "4611a1fe2ec5acf7dc2268d18f61fb77",
+    "cacheID": "860cd3b97f8f570f8cdd866f37c9c5d4",
     "id": null,
     "metadata": {},
     "name": "TestQuery",
     "operationKind": "query",
-    "text": "query TestQuery {\n  allFilms {\n    films {\n      title\n      director\n      id\n    }\n  }\n}\n"
+    "text": "query TestQuery {\n  allFilms {\n    films {\n      ...FilmHeader_film\n      ...FilmMeta_film\n      ...FilmSummary_film\n      id\n    }\n  }\n}\n\nfragment FilmHeader_film on Film {\n  title\n  episodeID\n}\n\nfragment FilmMeta_film on Film {\n  director\n  releaseDate\n}\n\nfragment FilmSummary_film on Film {\n  openingCrawl\n}\n"
   }
 };
-})();
 
-(node as any).hash = "ccd342347dc067272c46ba2b5aaa84e1";
+(node as any).hash = "f72130d9cf0a3876ed82ef15a3bb5b4d";
 
 export default node;
